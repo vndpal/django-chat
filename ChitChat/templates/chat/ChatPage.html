@@ -155,7 +155,7 @@
 		</div>
 		<div class="chat-logout">
 			{% if request.user.is_authenticated %}
-			<div style="float: left;font-weight: bold; color: #036358;">{{ request.user }} </div>
+			<div style="float: left;font-weight: bold; color: #036358;">{{ request.user|title }} </div>
 			<div style="float: right;"><a href="{% url 'logout-user' %}"><i class="fas fa-sign-out-alt"></i></a>
 			</div>
 			<div style="clear: both;"></div>
@@ -199,7 +199,7 @@
 			var div = document.createElement("div");
 			div.className = (data.username === "{{request.user.username}}") ? "chat-message right" : "chat-message left";
 			div.innerHTML = `<div class="message-content">
-                <span class="message-username">${data.username}</span>
+                <span class="message-username">${data.username.charAt(0).toUpperCase() + data.username.slice(1)}</span>
                 <span class="message-text">${data.message}</span>
                 <span class="message-timestamp">${data.time}</span>
             </div>`;
